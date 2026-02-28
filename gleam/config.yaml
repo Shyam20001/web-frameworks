@@ -8,8 +8,7 @@ language:
 
   engines:
     default:
-      command: /app/entrypoint.sh
-      options: run
+      command: /app/entrypoint.sh run
 
 framework:
   engines:
