@@ -59,8 +59,23 @@ jobs:
           ENGINE: ${{ matrix.engine }}
 
       - name: Wait
-        run: sleep 120
+        run: |
+          IP_FILE="${{ matrix.directory }}/ip-${{ matrix.engine }}.txt"
+          IP=$(cat $IP_FILE | tr -d '[:space:]')
 
+          echo "Waiting for http://$IP:3000/ to respond (timeout 30s)..."
+
+          SECONDS_WAITED=0
+          MAX_WAIT=30
+
+          until curl -s -f "http://$IP:3000/" > /dev/null; do
+            sleep 1
+            SECONDS_WAITED=$((SECONDS_WAITED+1))
+            if [ $SECONDS_WAITED -ge $MAX_WAIT ]; then
+              echo "Container did not become ready in $MAX_WAIT seconds!"
+              exit 1
+            fi
+          done
       - name: Test
         run: bundle exec rspec .spec
         env:
