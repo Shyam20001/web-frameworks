@@ -2,10 +2,7 @@ require 'pg'
 require 'mustache'
 require 'yaml'
 require 'active_support/number_helper'
-require 'dotenv'
 require 'etc'
-
-Dotenv.load
 
 SQL = %(
     SELECT f.id, l.label AS language, f.label AS framework, c.level, k.label, avg(v.value) AS value
