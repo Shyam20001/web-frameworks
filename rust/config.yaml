@@ -1,5 +1,5 @@
 language:
-  version: 1.93
+  version: 1.94
 
   files:
     - "**/*.rs"
