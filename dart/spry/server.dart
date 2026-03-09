@@ -8,8 +8,8 @@ import 'package:spry/spry.dart';
 Future<void> runServer([_]) async {
   final app = Spry(
     routes: {
-      '/': {HttpMethod.get: (_) => Response.text('')},
-      '/user': {HttpMethod.post: (_) => Response.text('')},
+      '/': {HttpMethod.get: (_) => Response(status: 200)},
+      '/user': {HttpMethod.post: (_) => Response(status: 200)},
       '/user/:name': {
         HttpMethod.get: (event) => Response.text(event.params.required('name')),
       },

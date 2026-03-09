@@ -4,5 +4,4 @@ environment:
   sdk: ^3.9.0
 
 dependencies:
-  osrv: ^0.3.0
   spry: ^7.0.0
