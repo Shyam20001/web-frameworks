@@ -1,9 +1,4 @@
-{{#language.java.version}}
-  FROM gradle:jdk{{{.}}} AS build
-{{/language.java.version}}
-{{^language.java.version}}
-  FROM gradle:jdk25 AS build
-{{/language.java.version}}
+FROM gradle:jdk25 AS build
 
 WORKDIR /usr/src/app
 
@@ -13,20 +8,18 @@ WORKDIR /usr/src/app
 
 RUN gradle build
 
-{{#language.java.version}}
-  FROM eclipse-temurin:{{{.}}}-jre
-{{/language.java.version}}
-{{^language.java.version}}
-  FROM eclipse-temurin:25-jre
-{{/language.java.version}}
+
+
+FROM eclipse-temurin:25.0.2_10-jre
 
 WORKDIR /usr/src/app
 
+RUN apt-get -qq update && \
+  apt-get -qy install --no-install-recommends curl && \
+  rm -rf /var/lib/apt/lists/*
+
 COPY --from=build /usr/src/app/build/libs/server.jar /usr/src/app/build/libs/server.jar
 
-RUN apt-get -qq update
-RUN apt-get -qy install curl
 HEALTHCHECK CMD curl --fail http://0.0.0.0:3000 || exit 1
 
 ENTRYPOINT ["java", "-server", "-jar", "/usr/src/app/build/libs/server.jar"]
-

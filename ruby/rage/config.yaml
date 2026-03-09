@@ -1,12 +1,15 @@
 framework:
   github: rage-rb/rage
-  version: 1.19
+  version: 1.21
 
   engines:
     - iodine
 
   environment:
     RAGE_ENV: production
+
+  build_deps:
+    - libyaml-dev
 
 language:
   engines:
