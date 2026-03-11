@@ -1,0 +1,21 @@
+framework:
+  github: supranim/supranim
+  version: 0.1.0
+
+  build_deps:
+    - openssl
+    - libpcre3-dev
+    - libevent-dev
+
+  build_opts:
+    - "--mm:arc"
+    - "-d:webapp"
+    - "-d:httpbench" # skip base middleware
+
+  engines:
+    default:
+      command: /usr/src/app/server start . --port 8000
+
+framework:
+  engines:
+    - default
