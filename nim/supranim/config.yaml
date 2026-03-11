@@ -1,13 +1,6 @@
 framework:
   github: supranim/supranim
   version: 0.1
-
-  build_deps:
-    - openssl
-    - libpcre3-dev
-    - libevent-dev
-    - pkg-config
-
   build_opts:
     - "--mm:arc"
     - "-d:webapp"
@@ -16,3 +9,9 @@ framework:
   engines:
     default:
       command: "/usr/src/app/server start . --port:3000"
+
+build_deps:
+  - openssl
+  - libpcre3-dev
+  - libevent-dev
+  - pkg-config
