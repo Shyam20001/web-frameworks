@@ -3,7 +3,6 @@ version       = "0.1.0"
 author        = "George Lemon"
 description   = "A new awesome Supranim application"
 license       = "MIT"
-srcDir        = "src"
 bin           = @["server"]
 
 # Dependencies
