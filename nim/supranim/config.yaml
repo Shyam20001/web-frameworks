@@ -6,9 +6,7 @@ framework:
     - "-d:webapp"
     - "-d:httpbench"
 
-server:
-  command: "/usr/src/app/server start . --port:3000"
-
 build_deps:
   - libpcre3-dev
   - libevent-dev
+  - libsodium-dev
