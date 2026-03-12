@@ -6,12 +6,9 @@ framework:
     - "-d:webapp"
     - "-d:httpbench"
 
-  engines:
-    default:
-      command: "/usr/src/app/server start . --port:3000"
+server:
+  command: "/usr/src/app/server start . --port:3000"
 
 build_deps:
-  - openssl
   - libpcre3-dev
   - libevent-dev
-  - pkg-config
