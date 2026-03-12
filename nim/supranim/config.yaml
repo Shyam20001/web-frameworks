@@ -9,4 +9,4 @@ framework:
 build_deps:
   - libpcre3-dev
   - libevent-dev
-  - libsodium-dev
+  - libsodium23
