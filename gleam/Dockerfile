@@ -1,4 +1,4 @@
-FROM ghcr.io/gleam-lang/gleam:v1.14.0-scratch AS gleam
+FROM ghcr.io/gleam-lang/gleam:v1.15.0-scratch AS gleam
 
 
 
