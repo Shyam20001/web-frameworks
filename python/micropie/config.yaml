@@ -7,3 +7,5 @@ framework:
     - uvicorn
     - hypercorn
     - daphne
+    - granian
+    - gunicorn
