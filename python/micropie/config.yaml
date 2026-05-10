@@ -1,0 +1,9 @@
+framework:
+  website: patx.gitman.io/micropie
+  github: patx/micropie
+  version: 0.28
+
+  engines:
+    - uvicorn
+    - hypercorn
+    - daphne
