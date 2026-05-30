@@ -1,0 +1,9 @@
+framework:
+  github: Snocko-main/gogo
+  version: 0.1.0
+
+  build_tags:
+    - gogo
+
+  engines:
+    - gogo
