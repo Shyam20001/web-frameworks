@@ -15,7 +15,12 @@ ENV PATH=/opt/vlang:$PATH \
   GIT_SSL_NO_VERIFY=1
 
 
-RUN git clone --depth 1 https://github.com/vlang/v /opt/vlang && make
+# Pin V to a fixed commit for reproducible builds (instead of moving master).
+# Shallow-fetch just that commit. Bump the SHA to update the compiler.
+RUN git -C /opt/vlang init -q && \
+  git -C /opt/vlang fetch --depth 1 https://github.com/vlang/v 065a450b86f6459b1e4398fe7b0594bbfcc2d691 && \
+  git -C /opt/vlang checkout -q FETCH_HEAD && \
+  make -C /opt/vlang
 
 RUN ln -s /opt/vlang/v /usr/bin/v
 
