@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version "2.2.+"
+    kotlin("jvm") version "2.4.+"
     application
     id("com.gradleup.shadow") version "+"
 }
@@ -17,7 +17,7 @@ buildscript {
 
 kotlin {
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
 
@@ -44,19 +44,14 @@ tasks {
     withType<KotlinJvmCompile>().configureEach {
         compilerOptions {
             allWarningsAsErrors = false
-            jvmTarget.set(JVM_21)
             freeCompilerArgs.add("-Xjvm-default=all")
         }
     }
 
-    java {
-        sourceCompatibility = VERSION_21
-        targetCompatibility = VERSION_21
-    }
 }
 
 dependencies {
-    implementation(platform("org.http4k:http4k-bom:6.21.+"))
+    implementation(platform("org.http4k:http4k-bom:6.53.+"))
     implementation("org.http4k:http4k-core")
     implementation("org.http4k:http4k-server-undertow")
 }

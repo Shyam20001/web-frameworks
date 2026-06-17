@@ -1,0 +1,14 @@
+[tools]
+ruby = "latest"
+php = "latest"
+python = "latest"
+deno = "latest"
+java = "latest"
+scala = "2"
+kotlin = "latest"
+node = "latest"
+clojure = "latest"
+bun = "latest"
+
+[settings]
+auto_install = false

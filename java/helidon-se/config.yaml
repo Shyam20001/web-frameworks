@@ -1,6 +1,6 @@
 framework:
   website: helidon.io
-  version: 4.3
+  version: 4.4
 
   build_deps:
     - openjdk-25-jdk-headless
@@ -17,4 +17,7 @@ framework:
   binaries:
     - target/helidon.webserver-jri
 
-  command: /opt/web/target/helidon.webserver-jri/bin/start
+language:
+  engines:
+    default:
+      command: /opt/web/target/helidon.webserver-jri/bin/start

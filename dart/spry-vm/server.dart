@@ -1,25 +1,36 @@
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:spry/spry.dart';
+import 'package:spry/osrv.dart' show Server;
+import 'package:spry/osrv/dart.dart' show serve;
+import 'package:spry/spry.dart' show HttpMethod, Response, Spry;
 
-Future<void> runServer([_]) async {
-  final app = createSpry();
+final app = Spry(
+  routes: {
+    '/': {HttpMethod.get: (_) => Response(null)},
+    '/user': {HttpMethod.post: (_) => Response(null)},
+    '/user/:name': {
+      HttpMethod.get: (event) => Response(event.params.required('name')),
+    },
+  },
+);
 
-  app.get('/', (_) {});
-  app.post('/user', (_) {});
-  app.get('/user/:name', (event) => event.params['name']);
+Future<void> runServer([Object? _]) async {
+  final runtime = await serve(
+    Server(fetch: app.fetch),
+    host: '0.0.0.0',
+    port: 3000,
+    shared: true,
+  );
 
-  final server = app.serve(hostname: '0.0.0.0', port: 3000, reusePort: true);
-  await server.ready();
+  await runtime.closed;
 }
 
 Future<void> main() async {
-  // Run main server.
-  await runServer();
-
   // Run cluster servers.
   for (int i = Platform.numberOfProcessors - 1; i > 0; i--) {
     await Isolate.spawn(runServer, null);
   }
+
+  await runServer();
 }

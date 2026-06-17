@@ -1,8 +1,8 @@
-val ZioHttpVersion = "3.5.1"
+val ZioHttpVersion = "3.11.2"
 
 name := "server"
 
-scalaVersion := "3.7.4"
+scalaVersion := "3.8.4"
 
 lazy val root = (project in file("."))
   .settings(

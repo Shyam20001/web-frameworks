@@ -1,13 +1,11 @@
 language:
-  version: weekly.2025.47
+  version: 0.5.1
   files:
     - "**/*.v"
     - server
   bootstrap:
-    - cd /opt/vlang && git fetch --all --tags && git checkout weekly.2025.47 && make && v -version && cd /app && v install https://github.com/enghitalo/vanilla_http_server
-
+    - cd /opt/vlang && v -version && cd /app
   build_flags:
-    - -prod -cc gcc
 
   engines:
     default:

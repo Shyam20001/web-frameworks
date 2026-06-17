@@ -1,11 +1,11 @@
 language:
-  version: 1.18
+  version: '1.20'
   files:
     - "**/*.cr"
     - shard.yml
   engines:
     default:
-      command: /usr/src/app/bin/server
+      command: /app/bin/server
 
 framework:
   engines:

@@ -1,11 +1,12 @@
-FROM dart:3.10
+FROM dart:3.12
 
 WORKDIR /app
+
 COPY pubspec.yaml pubspec.yaml
 RUN dart pub get --no-precompile
 
 {{#files}}
-COPY '{{source}}' '{{target}}'
+    COPY '{{source}}' '{{target}}'
 {{/files}}
 
 HEALTHCHECK CMD curl --fail http://0.0.0.0:3000 || exit 1
